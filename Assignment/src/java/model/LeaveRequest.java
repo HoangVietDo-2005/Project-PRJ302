@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  *
@@ -19,7 +20,32 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name="LeaveRequest", urlPatterns={"/LeaveRequest"})
 public class LeaveRequest extends HttpServlet {
-   
+   private String title;
+    private Date fromDate;
+    private Date toDate;
+    private String reason;
+    private String createdBy;
+    private String status; // "Inprogress", "Approved", "Rejected"
+    private String processedBy;
+
+    public LeaveRequest(String title, Date fromDate, Date toDate, String reason, String createdBy) {
+        this.title = title;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.reason = reason;
+        this.createdBy = createdBy;
+        this.status = "Inprogress";
+    }
+
+    public String getTitle() { return title; }
+    public Date getFromDate() { return fromDate; }
+    public Date getToDate() { return toDate; }
+    public String getReason() { return reason; }
+    public String getCreatedBy() { return createdBy; }
+    public String getStatus() { return status; }
+    public String getProcessedBy() { return processedBy; }
+    public void setStatus(String status) { this.status = status; }
+    public void setProcessedBy(String processedBy) { this.processedBy = processedBy; }
    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
